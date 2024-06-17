@@ -11,11 +11,12 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.develociraptor.domain.member.entity.Member;
+import org.example.develociraptor.domain.user.entity.User;
 import org.example.develociraptor.global.base.BaseEntity;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
@@ -27,6 +28,7 @@ import org.hibernate.annotations.SQLRestriction;
 @SQLRestriction("is_deleted = false")
 @DiscriminatorColumn(name = "DTYPE")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Table(name = "feeds")
 public class Feed extends BaseEntity {
 
 	@Id
@@ -35,8 +37,8 @@ public class Feed extends BaseEntity {
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "member_id")
-	private Member member;
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	@Column(nullable = false, columnDefinition = "TEXT")
 	private String content;
@@ -44,8 +46,8 @@ public class Feed extends BaseEntity {
 	private int views;
 
 	@Builder
-	public Feed(Member member, String content) {
-		this.member = member;
+	public Feed(User user, String content) {
+		this.user = user;
 		this.content = content;
 	}
 }

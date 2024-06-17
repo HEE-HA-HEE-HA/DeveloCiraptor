@@ -1,4 +1,4 @@
-package org.example.develociraptor.domain.like.entity;
+package org.example.develociraptor.domain.techstack.entity;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -11,17 +11,15 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.develociraptor.domain.feed.entity.Feed;
-import org.example.develociraptor.domain.user.entity.User;
-import org.example.develociraptor.global.idclass.LikeId;
+import org.example.develociraptor.global.idclass.ProjectTechStackId;
 
-@Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "likes")
-public class Like {
+@Getter
+public class ProjectTechStack {
 
 	@EmbeddedId
-	private LikeId likeId;
+	private ProjectTechStackId projectTechStackId;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@MapsId("feedId")
@@ -29,7 +27,8 @@ public class Like {
 	private Feed feed;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@MapsId("userId")
-	@JoinColumn(name = "user_id")
-	private User user;
+	@MapsId("techStackId")
+	@JoinColumn(name = "tech_stack_id")
+	private TechStack techStack;
+
 }

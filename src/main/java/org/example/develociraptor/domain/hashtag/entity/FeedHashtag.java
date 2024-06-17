@@ -1,4 +1,4 @@
-package org.example.develociraptor.domain.chatroom.entity;
+package org.example.develociraptor.domain.hashtag.entity;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -9,23 +9,24 @@ import jakarta.persistence.MapsId;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.develociraptor.domain.member.entity.Member;
-import org.example.develociraptor.global.idclass.ChatMemberId;
+import org.example.develociraptor.domain.feed.entity.Feed;
+import org.example.develociraptor.global.idclass.FeedHashtagId;
 
+@Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter
-public class ChatMember {
+public class FeedHashtag {
+
 	@EmbeddedId
-	ChatMemberId chatMemberId;
+	private FeedHashtagId feedHashtagId;
 
-	@MapsId("memberId")
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "member_id")
-	private Member member;
+	@MapsId("feedId")
+	@JoinColumn(name = "feed_id")
+	private Feed feed;
 
-	@MapsId("chatRoomId")
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "chat_room_id")
-	private ChatRoom chatRoom;
+	@MapsId("hashtagId")
+	@JoinColumn(name = "hashtag_id")
+	private Hashtag hashtag;
 }

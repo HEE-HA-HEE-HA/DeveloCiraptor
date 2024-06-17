@@ -68,31 +68,17 @@ public class JwtUtil {
         return false;
     }
 
-    public Claims getMemberInfoFromToken(String token) {
+    public Claims getUserInfoFromToken(String token) {
         return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token)
             .getBody();
     }
 
-    /*
-    public String createToken(String email, UserRoleEnum role) {
+    public String createToken(String email) {
         Date expireDate = createExpireDate(TOKEN_TIME);
 
         return BEARER_PREFIX +
             Jwts.builder()
                 .setSubject(email)
-                .claim(AUTHORIZATION_KEY, role)
-                .setExpiration(expireDate)
-                .setIssuedAt(new Date())
-                .signWith(key, signatureAlgorithm)
-                .compact();
-    }*/
-
-    public String createSellerToken(String businessNumber) {
-        Date expireDate = createExpireDate(TOKEN_TIME);
-
-        return BEARER_PREFIX +
-            Jwts.builder()
-                .setSubject(businessNumber)
                 .setExpiration(expireDate)
                 .setIssuedAt(new Date())
                 .signWith(key, signatureAlgorithm)

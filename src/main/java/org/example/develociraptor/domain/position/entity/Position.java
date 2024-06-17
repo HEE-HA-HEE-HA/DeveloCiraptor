@@ -1,4 +1,4 @@
-package org.example.develociraptor.domain.hashtag.entity;
+package org.example.develociraptor.domain.position.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -6,7 +6,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,16 +13,15 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "hashtags")
-public class Hashtag {
+@Table(name = "positions")
+public class Position {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "hashtag_id")
+	@Column(name = "position_id")
 	private Long id;
 
-	@Size(max = 100)
-	@Column(nullable = false, length = 100)
+	@Column(nullable = false)
 	private String name;
 
 }

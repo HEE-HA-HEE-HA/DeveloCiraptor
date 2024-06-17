@@ -9,11 +9,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.develociraptor.domain.member.entity.Member;
+import org.example.develociraptor.domain.user.entity.User;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -21,6 +22,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EntityListeners(AuditingEntityListener.class)
+@Table(name = "follows")
 public class Follow {
 
 	@Id
@@ -29,12 +31,12 @@ public class Follow {
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "from_member_id")
-	private Member fromMember;
+	@JoinColumn(name = "from_user_id")
+	private User fromUser;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "to_member_id")
-	private Member toMember;
+	@JoinColumn(name = "to_user_id")
+	private User toUser;
 
 	@CreatedDate
 	private LocalDateTime createdAt;

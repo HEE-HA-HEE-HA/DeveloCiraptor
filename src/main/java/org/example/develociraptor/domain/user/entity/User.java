@@ -1,4 +1,4 @@
-package org.example.develociraptor.domain.member.entity;
+package org.example.develociraptor.domain.user.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -7,6 +7,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -21,11 +22,11 @@ import org.hibernate.annotations.SQLRestriction;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SQLDelete(sql = "UPDATE member SET is_deleted = true where member_id = ?")
 @SQLRestriction("is_deleted = false")
-public class Member extends BaseEntity {
+public class User extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "member_id")
+	@Column(name = "user_id")
 	private Long id;
 
 	@Column(nullable = false, unique = true)
@@ -39,13 +40,13 @@ public class Member extends BaseEntity {
 	@Column(nullable = false, length = 20)
 	private String password;
 
-	private String introduce;
+	private String introduction;
 
 	@Enumerated(EnumType.STRING)
 	private Grade grade;
 
 	@Builder
-	public Member(String email, String nickName, String password) {
+	public User(String email, String nickName, String password) {
 		this.email = email;
 		this.nickName = nickName;
 		this.password = password;

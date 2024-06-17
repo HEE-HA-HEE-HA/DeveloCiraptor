@@ -11,11 +11,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinColumns;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.develociraptor.domain.chatroom.entity.ChatMember;
+import org.example.develociraptor.domain.chatroom.entity.ChatUser;
 import org.example.develociraptor.global.base.BaseEntity;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
@@ -25,6 +26,7 @@ import org.hibernate.annotations.SQLRestriction;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SQLDelete(sql = "UPDATE message SET is_deleted = true where message_id = ?")
 @SQLRestriction("is_deleted = false")
+@Table(name = "messages")
 public class Message extends BaseEntity {
 
 	@Id
@@ -37,7 +39,7 @@ public class Message extends BaseEntity {
 		@JoinColumn(name = "member_id"),
 		@JoinColumn(name = "chat_room_id")
 	})
-	private ChatMember chatRoom;
+	private ChatUser chatRoom;
 
 	@Size(max = 1000)
 	@Column(nullable = false, columnDefinition = "TEXT")
