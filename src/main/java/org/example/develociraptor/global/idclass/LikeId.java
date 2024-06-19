@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Getter
 public class LikeId implements Serializable {
 
-	private Long memberId;
+	private Long userId;
 
 	private Long feedId;
 }
