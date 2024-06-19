@@ -19,7 +19,7 @@ public class ChatUser {
 	@EmbeddedId
 	ChatUserId chatUserId;
 
-	@MapsId("UserId")
+	@MapsId("userId")
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;
