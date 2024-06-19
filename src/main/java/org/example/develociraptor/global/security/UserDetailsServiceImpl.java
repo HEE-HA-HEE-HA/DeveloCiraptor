@@ -22,6 +22,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return null;
     }
 
+    @Transactional(readOnly = true)
     public UserDetailsImpl getUserDetails(String email) throws UsernameNotFoundException{
         User user = userJpaRepository.findByEmail(email).orElseThrow(
             () -> new EntityNotFoundException(ErrorCode.MEMBER_NOT_FOUND.getMessage())
@@ -30,7 +31,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         UserDetailsDto userDetailsDto = UserDetailsDto.builder()
             .id(user.getId())
             .nickName(user.getNickName())
-            .email(user.getEmail()).build();
+            .email(email)
+            .positionId(user.getPosition().getId())
+            .introduction(user.getIntroduction())
+            .build();
 
 
         return new UserDetailsImpl(userDetailsDto);
