@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Getter
 public class UserTechStackId implements Serializable {
 
-	private Long memberId;
+	private Long userId;
 
 	private Long techStackId;
 }
