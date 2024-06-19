@@ -7,14 +7,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class UserDetailsImpl implements UserDetails {
 
-    private final User user;
+    private final UserDetailsDto userDetailsDto;
 
-    public UserDetailsImpl(User user) {
-        this.user = user;
+    public UserDetailsImpl(UserDetailsDto userDetailsDto) {
+        this.userDetailsDto = userDetailsDto;
     }
 
-    public User getUser() {
-        return user;
+    public UserDetailsDto getUserDetailsDto() {
+        return userDetailsDto;
     }
 
     @Override
