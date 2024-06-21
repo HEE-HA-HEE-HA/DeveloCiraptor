@@ -10,6 +10,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.develociraptor.domain.techstack.dto.TechStackRequestDto;
+import org.example.develociraptor.global.annotation.ValidatePassword;
 
 @Getter
 @EqualsAndHashCode
@@ -24,12 +25,7 @@ public class SignupRequestDto {
     @Email(message = "이메일 형태가 올바르지 않습니다.")
     private String email;
 
-    @NotBlank(message = "비밀번호는 필수 입력 값입니다.")
-    @Size(min = 4, max = 20, message = "비밀번호는 최소 4글자 최대 20글자만 가능합니다.")
-    @Pattern(
-        regexp = "^[a-zA-Z0-9!@#$]*$",
-        message = "특수문자는 !@#$만 사용 가능합니다."
-    )
+    @ValidatePassword
     private String password;
 
     private short positionId;
