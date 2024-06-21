@@ -20,6 +20,7 @@ import org.example.develociraptor.domain.position.entity.Position;
 import org.example.develociraptor.global.base.BaseEntity;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Entity
 @Getter
@@ -53,11 +54,26 @@ public class User extends BaseEntity {
 	@Enumerated(EnumType.STRING)
 	private Grade grade;
 
+
 	@Builder
 	public User(String email, String nickName, String password) {
 		this.email = email;
 		this.nickName = nickName;
 		this.password = password;
 		this.grade = Grade.BRONZE;
+	}
+
+	public void update(String nickName, String introduction, Position position) {
+		this.nickName = nickName;
+		this.introduction = introduction;
+		this.position = position;
+	}
+
+	public boolean isPasswordCheck(PasswordEncoder passwordEncoder, String s) {
+		return passwordEncoder.matches(password, s);
+	}
+
+	public void updatePassword(String newPassword) {
+		this.password = newPassword;
 	}
 }
