@@ -1,18 +1,12 @@
 package org.example.develociraptor.domain.user.service;
 
-import static org.example.develociraptor.global.exception.ErrorCode.*;
+import static org.example.develociraptor.global.exception.ErrorMessage.*;
 
 import jakarta.persistence.EntityNotFoundException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.example.develociraptor.domain.position.entity.Position;
 import org.example.develociraptor.domain.position.repository.PositionJpaRepository;
-import org.example.develociraptor.domain.position.service.PositionService;
-import org.example.develociraptor.domain.techstack.entity.TechStack;
-import org.example.develociraptor.domain.techstack.repository.TechStackJpaRepository;
-import org.example.develociraptor.domain.techstack.repository.UserTechStackJpaRepository;
 import org.example.develociraptor.domain.user.dto.LoginRequestDto;
 import org.example.develociraptor.domain.user.dto.PasswordRequestDto;
 import org.example.develociraptor.domain.user.dto.SignupRequestDto;
@@ -20,7 +14,6 @@ import org.example.develociraptor.domain.user.dto.UserRequestDto;
 import org.example.develociraptor.domain.user.dto.UserResponseDto;
 import org.example.develociraptor.domain.user.entity.User;
 import org.example.develociraptor.domain.user.repository.UserJpaRepository;
-import org.example.develociraptor.global.exception.ErrorCode;
 import org.example.develociraptor.global.jwt.JwtUtil;
 import org.example.develociraptor.global.security.UserDetailsDto;
 import org.springframework.security.authentication.BadCredentialsException;

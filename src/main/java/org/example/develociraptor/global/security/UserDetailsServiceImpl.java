@@ -4,7 +4,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.example.develociraptor.domain.user.entity.User;
 import org.example.develociraptor.domain.user.repository.UserJpaRepository;
-import org.example.develociraptor.global.exception.ErrorCode;
+import org.example.develociraptor.global.exception.ErrorMessage;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,10 +22,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return null;
     }
 
+
     @Transactional(readOnly = true)
     public UserDetailsImpl getUserDetails(String email) throws UsernameNotFoundException{
         User user = userJpaRepository.findByEmail(email).orElseThrow(
-            () -> new EntityNotFoundException(ErrorCode.MEMBER_NOT_FOUND.getMessage())
+            () -> new EntityNotFoundException(ErrorMessage.MEMBER_NOT_FOUND.getMessage())
         );
 
         UserDetailsDto userDetailsDto = UserDetailsDto.builder()
