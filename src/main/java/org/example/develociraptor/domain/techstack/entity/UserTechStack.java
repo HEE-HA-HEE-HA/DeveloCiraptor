@@ -1,4 +1,4 @@
-package org.example.develociraptor.domain.chatroom.entity;
+package org.example.develociraptor.domain.techstack.entity;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -9,23 +9,24 @@ import jakarta.persistence.MapsId;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.develociraptor.domain.member.entity.Member;
-import org.example.develociraptor.global.idclass.ChatMemberId;
+import org.example.develociraptor.domain.user.entity.User;
+import org.example.develociraptor.global.idclass.UserTechStackId;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class ChatMember {
+public class UserTechStack {
+
 	@EmbeddedId
-	ChatMemberId chatMemberId;
+	private UserTechStackId userTechStackId;
 
-	@MapsId("memberId")
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "member_id")
-	private Member member;
+	@MapsId("userId")
+	@JoinColumn(name = "user_id")
+	private User user;
 
-	@MapsId("chatRoomId")
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "chat_room_id")
-	private ChatRoom chatRoom;
+	@MapsId("techStackId")
+	@JoinColumn(name = "tech_stack_id")
+	private TechStack techStack;
 }

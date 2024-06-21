@@ -1,17 +1,20 @@
 package org.example.develociraptor.global.idclass;
 
-
 import jakarta.persistence.Embeddable;
 import java.io.Serializable;
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Embeddable
-@EqualsAndHashCode
 @NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
 @Getter
-public class ChatMemberId implements Serializable {
-	private Long memberId;
-	private Long chatRoomId;
+public class UserTechStackId implements Serializable {
+
+	private Long userId;
+
+	private Long techStackId;
 }

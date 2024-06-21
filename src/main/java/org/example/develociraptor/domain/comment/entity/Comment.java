@@ -14,7 +14,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.develociraptor.domain.feed.entity.Feed;
-import org.example.develociraptor.domain.member.entity.Member;
+import org.example.develociraptor.domain.user.entity.User;
 import org.example.develociraptor.global.base.BaseEntity;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
@@ -32,8 +32,8 @@ public class Comment extends BaseEntity {
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "member_id")
-	private Member member;
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "feed_id")
@@ -47,8 +47,8 @@ public class Comment extends BaseEntity {
 	private Long parentId;
 
 	@Builder
-	public Comment(Member member, Feed feed, String content) {
-		this.member = member;
+	public Comment(User user, Feed feed, String content) {
+		this.user = user;
 		this.feed = feed;
 		this.content = content;
 		this.parentId = null;

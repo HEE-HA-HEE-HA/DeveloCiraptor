@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class PositionProjectId {
-	private Long positionId;
+	private Short positionId;
 	private Long projectId;
 }

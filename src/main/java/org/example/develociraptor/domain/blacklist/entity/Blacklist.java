@@ -13,9 +13,7 @@ import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.develociraptor.domain.member.entity.Member;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.SQLRestriction;
+import org.example.develociraptor.domain.user.entity.User;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -31,12 +29,12 @@ public class Blacklist {
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "from_member_id")
-	private Member fromMember;
+	@JoinColumn(name = "from_user_id")
+	private User fromUser;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "to_member_id")
-	private Member toMember;
+	@JoinColumn(name = "to_user_id")
+	private User toUser;
 
 	@CreatedDate
 	private LocalDateTime createdAt;
