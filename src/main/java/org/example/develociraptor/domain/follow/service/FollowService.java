@@ -1,6 +1,8 @@
 package org.example.develociraptor.domain.follow.service;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.example.develociraptor.domain.follow.dto.FollowerResponseDto;
 import org.example.develociraptor.domain.follow.entity.Follow;
 import org.example.develociraptor.domain.follow.repository.FollowJpaRepository;
 import org.example.develociraptor.domain.user.entity.User;
@@ -38,4 +40,12 @@ public class FollowService {
 
         return "언팔로우 되었습니다.";
     }
+
+    public List<FollowerResponseDto> getFollowers(Long userId) {
+        User user = userService.findById(userId);
+
+        return followJpaRepository.findByToUser(user)
+            .stream().map(FollowerResponseDto::new).toList();
+    }
+
 }
