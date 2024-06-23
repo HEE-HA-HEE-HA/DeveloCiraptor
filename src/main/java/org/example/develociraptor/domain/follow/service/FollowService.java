@@ -13,11 +13,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class FollowService {
 
-    private FollowJpaRepository followJpaRepository;
-    private UserService userService;
+    private final FollowJpaRepository followJpaRepository;
+    private final UserService userService;
 
     public String createFollow(Long fromId, Long toId) {
-        User fromUser =  userService.findById(fromId);
+        User fromUser = userService.findById(fromId);
         User toUser = userService.findById(toId);
 
         Follow follow = Follow.builder()
@@ -27,5 +27,15 @@ public class FollowService {
         followJpaRepository.save(follow);
 
         return "팔로우 되었습니다.";
+    }
+
+    public String deleteFollow(Long fromId, Long toId) {
+        User fromUser = userService.findById(fromId);
+        User toUser = userService.findById(toId);
+        Follow follow = followJpaRepository.findByFromUserAndToUser(fromUser, toUser);
+
+        followJpaRepository.delete(follow);
+
+        return "언팔로우 되었습니다.";
     }
 }
