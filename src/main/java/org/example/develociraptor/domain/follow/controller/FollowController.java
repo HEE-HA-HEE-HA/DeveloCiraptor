@@ -4,6 +4,7 @@ package org.example.develociraptor.domain.follow.controller;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.example.develociraptor.domain.follow.dto.FollowerResponseDto;
+import org.example.develociraptor.domain.follow.dto.FollowingResponseDto;
 import org.example.develociraptor.domain.follow.service.FollowService;
 import org.example.develociraptor.global.dto.ResponseDto;
 import org.example.develociraptor.global.security.UserDetailsImpl;
@@ -49,6 +50,15 @@ public class FollowController {
         List<FollowerResponseDto> followerResponseDtos = followService.getFollowers(userId);
 
         return ResponseDto.of(HttpStatus.OK, followerResponseDtos);
+    }
+
+    @GetMapping("/{userId}/following")
+    public ResponseEntity<ResponseDto<List<FollowingResponseDto>>> getFollowing(
+        @PathVariable Long userId
+    ){
+        List<FollowingResponseDto> followingResponseDtos = followService.getFollowing(userId);
+
+        return ResponseDto.of(HttpStatus.OK, followingResponseDtos);
     }
 
 }
