@@ -28,7 +28,8 @@ public class FollowController {
     @PostMapping("/{userId}/follow")
     public ResponseEntity<ResponseDto<String>> createFollow(
         @AuthenticationPrincipal UserDetailsImpl userDetails,
-        @PathVariable Long userId) {
+        @PathVariable Long userId
+    ) {
         String message = followService.createFollow(userDetails.getUserDetailsDto().id(), userId);
 
         return ResponseDto.of(HttpStatus.CREATED, message);
@@ -37,7 +38,8 @@ public class FollowController {
     @DeleteMapping("/{userId}/follow")
     public ResponseEntity<ResponseDto<String>> deleteFollow(
         @AuthenticationPrincipal UserDetailsImpl userDetails,
-        @PathVariable Long userId) {
+        @PathVariable Long userId
+    ) {
         String message = followService.deleteFollow(userDetails.getUserDetailsDto().id(), userId);
 
         return ResponseDto.of(HttpStatus.OK, message);
@@ -46,7 +48,7 @@ public class FollowController {
     @GetMapping("/{userId}/followers")
     public ResponseEntity<ResponseDto<List<FollowerResponseDto>>> getFollowers(
         @PathVariable Long userId
-    ){
+    ) {
         List<FollowerResponseDto> followerResponseDtos = followService.getFollowers(userId);
 
         return ResponseDto.of(HttpStatus.OK, followerResponseDtos);
@@ -55,10 +57,19 @@ public class FollowController {
     @GetMapping("/{userId}/following")
     public ResponseEntity<ResponseDto<List<FollowingResponseDto>>> getFollowing(
         @PathVariable Long userId
-    ){
+    ) {
         List<FollowingResponseDto> followingResponseDtos = followService.getFollowing(userId);
 
         return ResponseDto.of(HttpStatus.OK, followingResponseDtos);
+    }
+
+    @GetMapping("{userId}/followers/total")
+    public ResponseEntity<ResponseDto<Integer>> totalFollowers(
+        @PathVariable Long userId
+    ) {
+        Integer totalFollowers = followService.getTotalFollowers(userId);
+
+        return ResponseDto.of(HttpStatus.OK, totalFollowers);
     }
 
 }

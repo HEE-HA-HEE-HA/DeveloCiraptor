@@ -55,4 +55,10 @@ public class FollowService {
         return followJpaRepository.findByFromUser(user)
             .stream().map(FollowingResponseDto::new).toList();
     }
+
+    public Integer getTotalFollowers(Long userId) {
+        User user = userService.findById(userId);
+
+        return followJpaRepository.countByToUser(user);
+    }
 }
