@@ -19,6 +19,7 @@ public class FollowService {
     private final FollowJpaRepository followJpaRepository;
     private final UserService userService;
 
+    @Transactional
     public String createFollow(Long fromId, Long toId) {
         User fromUser = userService.findById(fromId);
         User toUser = userService.findById(toId);
@@ -32,6 +33,7 @@ public class FollowService {
         return "팔로우 되었습니다.";
     }
 
+    @Transactional
     public String deleteFollow(Long fromId, Long toId) {
         User fromUser = userService.findById(fromId);
         User toUser = userService.findById(toId);
