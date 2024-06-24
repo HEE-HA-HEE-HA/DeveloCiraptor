@@ -16,8 +16,8 @@ public class FollowerResponseDto {
 
     @Builder
     public FollowerResponseDto(Follow follow) {
-        this.id = follow.getId();
-        this.nickName = follow.getToUser().getNickName();
-        this.positionId = follow.getToUser().getPosition().getId();
+        this.id = follow.getFromUser().getId();
+        this.nickName = follow.getFromUser().getNickName();
+        this.positionId = follow.getFromUser().getPosition().getId();
     }
 }
