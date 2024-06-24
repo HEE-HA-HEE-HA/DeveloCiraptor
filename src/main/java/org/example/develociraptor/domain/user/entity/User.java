@@ -46,7 +46,7 @@ public class User extends BaseEntity {
 	private String nickName;
 
 	@Size(min = 4, max = 20)
-	@Column(nullable = false, length = 20)
+	@Column(nullable = false, length = 60)
 	private String password;
 
 	private String introduction;
@@ -69,8 +69,8 @@ public class User extends BaseEntity {
 		this.position = position;
 	}
 
-	public boolean isPasswordCheck(PasswordEncoder passwordEncoder, String s) {
-		return passwordEncoder.matches(password, s);
+	public boolean isPasswordCheck(PasswordEncoder passwordEncoder, String password) {
+		return passwordEncoder.matches(password, this.password);
 	}
 
 	public void updatePassword(String newPassword) {
