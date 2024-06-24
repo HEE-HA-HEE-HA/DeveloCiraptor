@@ -61,4 +61,10 @@ public class FollowService {
 
         return followJpaRepository.countByToUser(user);
     }
+
+    public Integer getTotalFollowings(Long userId) {
+        User user = userService.findById(userId);
+
+        return followJpaRepository.countByFromUser(user);
+    }
 }

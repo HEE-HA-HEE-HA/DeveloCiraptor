@@ -72,4 +72,13 @@ public class FollowController {
         return ResponseDto.of(HttpStatus.OK, totalFollowers);
     }
 
+    @GetMapping("{userId}/followings/total")
+    public ResponseEntity<ResponseDto<Integer>> totalFollowings(
+        @PathVariable Long userId
+    ) {
+        Integer totalFollowings = followService.getTotalFollowings(userId);
+
+        return ResponseDto.of(HttpStatus.OK, totalFollowings);
+    }
+
 }
