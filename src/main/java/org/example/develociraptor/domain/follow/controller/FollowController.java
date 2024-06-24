@@ -54,7 +54,7 @@ public class FollowController {
         return ResponseDto.of(HttpStatus.OK, followerResponseDtos);
     }
 
-    @GetMapping("/{userId}/following")
+    @GetMapping("/{userId}/followings")
     public ResponseEntity<ResponseDto<List<FollowingResponseDto>>> getFollowing(
         @PathVariable Long userId
     ) {
