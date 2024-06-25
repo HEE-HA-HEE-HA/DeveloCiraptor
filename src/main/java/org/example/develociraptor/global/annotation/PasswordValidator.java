@@ -3,7 +3,9 @@ package org.example.develociraptor.global.annotation;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import java.util.regex.Pattern;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PasswordValidator implements ConstraintValidator<ValidatePassword, String> {
 
 	private static final Pattern PASSWORD_PATTERN = Pattern.compile("^[a-zA-Z0-9!@#$]*$");
