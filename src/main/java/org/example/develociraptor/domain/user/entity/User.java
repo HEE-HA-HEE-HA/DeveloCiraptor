@@ -25,7 +25,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@SQLDelete(sql = "UPDATE member SET is_deleted = true where member_id = ?")
+@SQLDelete(sql = "UPDATE User SET is_deleted = true where user_id = ?")
 @SQLRestriction("is_deleted = false")
 public class User extends BaseEntity {
 
@@ -45,7 +45,6 @@ public class User extends BaseEntity {
 	@Column(nullable = false, unique = true, length = 12)
 	private String nickName;
 
-	@Size(min = 4, max = 20)
 	@Column(nullable = false, length = 60)
 	private String password;
 
