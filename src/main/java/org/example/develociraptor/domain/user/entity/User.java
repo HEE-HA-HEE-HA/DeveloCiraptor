@@ -25,7 +25,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@SQLDelete(sql = "UPDATE member SET is_deleted = true where member_id = ?")
+@SQLDelete(sql = "UPDATE User SET is_deleted = true where user_id = ?")
 @SQLRestriction("is_deleted = false")
 public class User extends BaseEntity {
 
@@ -45,8 +45,7 @@ public class User extends BaseEntity {
 	@Column(nullable = false, unique = true, length = 12)
 	private String nickName;
 
-	@Size(min = 4, max = 20)
-	@Column(nullable = false, length = 20)
+	@Column(nullable = false, length = 60)
 	private String password;
 
 	private String introduction;
@@ -69,8 +68,8 @@ public class User extends BaseEntity {
 		this.position = position;
 	}
 
-	public boolean isPasswordCheck(PasswordEncoder passwordEncoder, String s) {
-		return passwordEncoder.matches(password, s);
+	public boolean isPasswordCheck(PasswordEncoder passwordEncoder, String password) {
+		return passwordEncoder.matches(password, this.password);
 	}
 
 	public void updatePassword(String newPassword) {
