@@ -53,7 +53,6 @@ public class User extends BaseEntity {
 	@Enumerated(EnumType.STRING)
 	private Grade grade;
 
-
 	@Builder
 	public User(String email, String nickName, String password) {
 		this.email = email;

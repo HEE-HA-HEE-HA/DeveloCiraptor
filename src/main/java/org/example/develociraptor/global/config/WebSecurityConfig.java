@@ -9,6 +9,7 @@ import org.example.develociraptor.global.security.UserDetailsServiceImpl;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -53,6 +54,8 @@ public class WebSecurityConfig {
                 .permitAll() // resources 접근 허용 설정
                 .requestMatchers("/api/v1/users/signup").permitAll()
                 .requestMatchers("/api/v1/users/login").permitAll()
+                // 팔로워
+                .requestMatchers(HttpMethod.GET,"/api/v1/users/{userId}/**").permitAll()
 //                // 카카오 로그인
 //                .requestMatchers("/").permitAll()
 //                .requestMatchers("/v1/users/kakao/callback").permitAll()

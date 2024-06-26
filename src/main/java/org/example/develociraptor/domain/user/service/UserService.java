@@ -129,6 +129,11 @@ public class UserService {
 			.orElseThrow(() -> new EntityNotFoundException(MEMBER_NOT_FOUND.getMessage()));
 	}
 
+	public User findById(Long id) {
+		return userJpaRepository.findById(id)
+			.orElseThrow(() -> new EntityNotFoundException(MEMBER_NOT_FOUND.getMessage()));
+	}
+
 	private void validatePassword(boolean isPassword) {
 		if (!isPassword) {
 			throw new BadCredentialsException(PASSWORD_NOT_MATCH.getMessage());

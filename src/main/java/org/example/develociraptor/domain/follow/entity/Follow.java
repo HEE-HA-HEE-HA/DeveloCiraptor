@@ -12,6 +12,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.develociraptor.domain.user.entity.User;
@@ -40,4 +41,10 @@ public class Follow {
 
 	@CreatedDate
 	private LocalDateTime createdAt;
+
+	@Builder
+	public Follow(User fromUser, User toUser) {
+		this.fromUser = fromUser;
+		this.toUser = toUser;
+	}
 }
