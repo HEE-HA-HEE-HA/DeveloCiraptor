@@ -3,17 +3,12 @@ package org.example.develociraptor.domain.user.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.example.develociraptor.domain.techstack.entity.TechStack;
 import org.example.develociraptor.domain.techstack.service.TechStackService;
-import org.example.develociraptor.domain.techstack.service.UserTechStackService;
 import org.example.develociraptor.domain.user.dto.LoginRequestDto;
 import org.example.develociraptor.domain.user.dto.PasswordRequestDto;
 import org.example.develociraptor.domain.user.dto.SignupRequestDto;
-import org.example.develociraptor.domain.user.dto.UserRequestDto;
 import org.example.develociraptor.domain.user.dto.UserResponseDto;
-import org.example.develociraptor.domain.user.entity.User;
 import org.example.develociraptor.domain.user.service.UserService;
 import org.example.develociraptor.global.dto.ResponseDto;
 import org.example.develociraptor.global.jwt.JwtUtil;
@@ -21,6 +16,7 @@ import org.example.develociraptor.global.security.UserDetailsImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,7 +33,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     private final UserService userService;
-    private final TechStackService techStackService;
 
     @PostMapping("/signup")
     public ResponseEntity<ResponseDto<Long>> signup(
@@ -50,7 +45,8 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<ResponseDto<Void>> login(
-        @Valid @RequestBody LoginRequestDto loginRequestDto, HttpServletResponse httpServletResponse
+        @Valid @RequestBody LoginRequestDto loginRequestDto,
+        HttpServletResponse httpServletResponse
     ) {
         String accessToken = userService.login(loginRequestDto);
         httpServletResponse.addHeader(JwtUtil.AUTHORIZATION_HEADER, accessToken);

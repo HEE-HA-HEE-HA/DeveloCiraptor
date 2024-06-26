@@ -2,6 +2,7 @@ package org.example.develociraptor.global.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import org.example.develociraptor.domain.user.entity.User;
 import org.example.develociraptor.global.jwt.JwtUtil;
 import org.example.develociraptor.global.security.JwtAuthorizationFilter;
 import org.example.develociraptor.global.security.UserDetailsServiceImpl;
@@ -16,6 +17,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.intercept.AuthorizationFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
