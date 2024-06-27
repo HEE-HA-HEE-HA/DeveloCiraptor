@@ -1,0 +1,9 @@
+INSERT INTO positions (name) VALUES ('프론트');
+INSERT INTO positions (name) VALUES ('백엔드');
+INSERT INTO positions (name) VALUES ('디자이너');
+INSERT INTO positions (name) VALUES ('IOS');
+INSERT INTO positions (name) VALUES ('안드로이드');
+INSERT INTO positions (name) VALUES ('데브옵스');
+INSERT INTO positions (name) VALUES ('PM');
+INSERT INTO positions (name) VALUES ('기획자');
+INSERT INTO positions (name) VALUES ('마케터');
