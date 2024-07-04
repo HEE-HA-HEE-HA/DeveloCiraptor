@@ -2,7 +2,6 @@ package org.example.develociraptor.global.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import org.example.develociraptor.domain.user.entity.User;
 import org.example.develociraptor.global.jwt.JwtUtil;
 import org.example.develociraptor.global.security.JwtAuthorizationFilter;
 import org.example.develociraptor.global.security.UserDetailsServiceImpl;
@@ -17,7 +16,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.access.intercept.AuthorizationFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
@@ -54,6 +52,7 @@ public class WebSecurityConfig {
                 .permitAll() // resources 접근 허용 설정
                 .requestMatchers("/api/v1/users/signup").permitAll()
                 .requestMatchers("/api/v1/users/login").permitAll()
+                .requestMatchers("api/v1/positions/**").permitAll()
                 // 팔로워
                 .requestMatchers(HttpMethod.GET,"/api/v1/users/{userId}/**").permitAll()
 //                // 카카오 로그인

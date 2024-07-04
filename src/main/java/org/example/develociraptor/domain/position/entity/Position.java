@@ -24,4 +24,7 @@ public class Position {
 	@Column(nullable = false)
 	private String name;
 
+	public Position(String name) {
+		this.name = name;
+	}
 }
