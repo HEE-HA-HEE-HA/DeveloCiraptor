@@ -6,7 +6,7 @@ import org.example.develociraptor.domain.position.entity.Position;
 
 public class PositionDummy {
 
-	private String[] positionNames =
+	private static final String[] positionNames =
 		{
 			"프론트",
 			"백엔드",
@@ -20,7 +20,7 @@ public class PositionDummy {
 		};
 
 
-	public List<Position> getPositionDummys() {
+	public static List<Position> getPositionDummys() {
 		return Arrays.stream(positionNames).map(Position::new).toList();
 	}
 
