@@ -52,7 +52,8 @@ public class WebSecurityConfig {
                 .permitAll() // resources 접근 허용 설정
                 .requestMatchers("/api/v1/users/signup").permitAll()
                 .requestMatchers("/api/v1/users/login").permitAll()
-                .requestMatchers("api/v1/positions/**").permitAll()
+                .requestMatchers("/api/v1/positions/**").permitAll()
+                .requestMatchers("/api/v1/tech-stack/**").permitAll()
                 // 팔로워
                 .requestMatchers(HttpMethod.GET,"/api/v1/users/{userId}/**").permitAll()
 //                // 카카오 로그인
