@@ -19,7 +19,7 @@ public class PositionService {
 		List<PositionInfo> positionInfos = positionJpaRepository
 			.findAll()
 			.stream()
-			.map(PositionInfo::of).toList();
+			.map(PositionInfo::from).toList();
 
 		if (positionInfos.isEmpty()) {
 			throw new EmptyException();

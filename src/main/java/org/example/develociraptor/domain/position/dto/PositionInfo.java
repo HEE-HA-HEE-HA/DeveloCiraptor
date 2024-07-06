@@ -9,7 +9,7 @@ public record PositionInfo(
 	String name
 ) {
 
-	public static PositionInfo of(Position position) {
+	public static PositionInfo from(Position position) {
 		return PositionInfo.builder()
 			.id(position.getId())
 			.name(position.getName())
