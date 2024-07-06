@@ -62,7 +62,7 @@ public class UserService {
 			.email(user.email())
 			.nickName(user.nickName())
 			.introduction(user.introduction())
-			.techStackRequestDtos(new ArrayList<>())
+			.techStackDtos(new ArrayList<>())
 			.build();
 	}
 
@@ -120,7 +120,7 @@ public class UserService {
 			.email(user.getEmail())
 			.nickName(user.getNickName())
 			.introduction(user.getIntroduction())
-			.techStackRequestDtos(new ArrayList<>())
+			.techStackDtos(new ArrayList<>())
 			.build();
 	}
 

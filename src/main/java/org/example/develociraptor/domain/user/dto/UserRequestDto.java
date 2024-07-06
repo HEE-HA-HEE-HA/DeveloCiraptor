@@ -4,7 +4,7 @@ import java.util.List;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.develociraptor.domain.techstack.dto.TechStackRequestDto;
+import org.example.develociraptor.domain.techstack.dto.TechStackDto;
 
 @Getter
 @NoArgsConstructor
@@ -17,6 +17,6 @@ public class UserRequestDto {
 
     private short positionId;
 
-    private List<TechStackRequestDto> techStackRequestDtos;
+    private List<TechStackDto> techStackDtos;
 
 }

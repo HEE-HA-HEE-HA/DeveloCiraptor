@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.develociraptor.domain.techstack.dto.TechStackRequestDto;
+import org.example.develociraptor.domain.techstack.dto.TechStackDto;
 
 @Getter
 @EqualsAndHashCode
@@ -16,7 +16,7 @@ public class UserResponseDto {
     private String email;
     private String introduction;
     private short positionId;
-    private List<TechStackRequestDto> techStackRequestDtos;
+    private List<TechStackDto> techStackDtos;
 
     @Builder
     public UserResponseDto(
@@ -25,13 +25,13 @@ public class UserResponseDto {
         String email,
         String introduction,
         short positionId,
-        List<TechStackRequestDto> techStackRequestDtos) {
+        List<TechStackDto> techStackDtos) {
 
         this.id = id;
         this.nickName = nickName;
         this.email = email;
         this.introduction = introduction;
         this.positionId = positionId;
-        this.techStackRequestDtos = techStackRequestDtos;
+        this.techStackDtos = techStackDtos;
     }
 }

@@ -8,7 +8,7 @@ import java.util.List;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.develociraptor.domain.techstack.dto.TechStackRequestDto;
+import org.example.develociraptor.domain.techstack.dto.TechStackDto;
 import org.example.develociraptor.global.annotation.ValidatePassword;
 
 @Getter
@@ -29,6 +29,6 @@ public class SignupRequestDto {
 
     private short positionId;
 
-    private List<TechStackRequestDto> techStackRequestDtos;
+    private List<TechStackDto> techStackDtos;
 
 }
