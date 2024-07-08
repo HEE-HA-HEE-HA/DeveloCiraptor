@@ -20,9 +20,17 @@ public class TechStack {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "tech_stack_id")
-	private Long id;
+	private Short id;
 
 	@Size(max = 50)
 	@Column(nullable = false, length = 50)
 	private String name;
+
+	public static TechStack createTechStack(String name) {
+		return new TechStack(name);
+	}
+
+	protected TechStack(String name) {
+		this.name = name;
+	}
 }

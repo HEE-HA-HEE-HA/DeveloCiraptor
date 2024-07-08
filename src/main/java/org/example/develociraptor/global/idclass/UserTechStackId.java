@@ -16,5 +16,5 @@ public class UserTechStackId implements Serializable {
 
 	private Long userId;
 
-	private Long techStackId;
+	private Short techStackId;
 }

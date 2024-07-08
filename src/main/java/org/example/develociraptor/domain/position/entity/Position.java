@@ -24,4 +24,11 @@ public class Position {
 	@Column(nullable = false)
 	private String name;
 
+	public static Position createPosition(String name) {
+		return new Position(name);
+	}
+
+	private Position(String name) {
+		this.name = name;
+	}
 }
